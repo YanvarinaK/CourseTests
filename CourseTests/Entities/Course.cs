@@ -11,7 +11,11 @@ namespace CourseTests.Entities
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Test Tests { get; set; } 
-        
+        public List<Test> Tests { get; set; }
+
+        public Course()
+        {
+            Tests = new List<Test>();
+        }
     }
 }
