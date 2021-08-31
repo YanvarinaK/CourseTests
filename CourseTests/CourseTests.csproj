@@ -60,6 +60,12 @@
     <Compile Include="Entities\RecordAnswer.cs" />
     <Compile Include="Entities\Test.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="GlobalInterfaces\ICourseCRUDService.cs" />
+    <Compile Include="GlobalInterfaces\IPossibleAnswerCRUDService.cs" />
+    <Compile Include="GlobalInterfaces\IQuestionCRUDService.cs" />
+    <Compile Include="GlobalInterfaces\IRecordAnswerCRUDService.cs" />
+    <Compile Include="GlobalInterfaces\ITestCRUDService.cs" />
+    <Compile Include="GlobalInterfaces\IUserCRUDService.cs" />
     <Compile Include="Migrations\202108302104421_init.cs" />
     <Compile Include="Migrations\202108302104421_init.designer.cs">
       <DependentUpon>202108302104421_init.cs</DependentUpon>
