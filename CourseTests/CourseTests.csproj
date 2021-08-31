@@ -81,6 +81,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CRUD\CourseCRUDService.cs" />
     <Compile Include="Services\CRUD\UserCRUDService.cs" />
   </ItemGroup>
   <ItemGroup>

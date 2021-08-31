@@ -15,7 +15,7 @@ namespace CourseTests
         static void Main(string[] args)
         {
             IUserCRUDService userCRUDService = new UserCRUDService();
-           
+            ICourseCRUDService courseCRUDService = new CourseCRUDService();
         }
     }
 }
