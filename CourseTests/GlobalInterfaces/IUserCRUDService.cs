@@ -1,4 +1,5 @@
-﻿using CourseTests.Entities;
+﻿using CourseTests.DataTransferObjects.User;
+using CourseTests.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace CourseTests.GlobalInterfaces
 {
     public interface IUserCRUDService
     {
-        bool Create(User entity);
+        bool Create(UserCreate user);
 
-        User Get(Guid id);
+        UserView Get(Guid id);
 
-        List<User> List();
+        List<UserList> List();
 
-        bool Update(User newEntity, Guid id);
+        bool Update(UserUpdate user, Guid id);
 
         bool Delete(Guid id);
     }

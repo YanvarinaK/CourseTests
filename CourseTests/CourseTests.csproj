@@ -54,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseTestsContext.cs" />
+    <Compile Include="DataTransferObjects\User\UserCreate.cs" />
+    <Compile Include="DataTransferObjects\User\UserList.cs" />
+    <Compile Include="DataTransferObjects\User\UserUpdate.cs" />
+    <Compile Include="DataTransferObjects\User\UserView.cs" />
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Entities\PossibleAnswer.cs" />
     <Compile Include="Entities\Question.cs" />

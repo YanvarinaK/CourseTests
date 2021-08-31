@@ -1,4 +1,5 @@
-﻿using CourseTests.Entities;
+﻿using CourseTests.DataTransferObjects.User;
+using CourseTests.Entities;
 using CourseTests.GlobalInterfaces;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,18 @@ namespace CourseTests.Services.CRUD
 {
     public class UserCRUDService : IUserCRUDService
     {
-        public bool Create(User entity)
+        public bool Create(UserCreate user)
         {
             try
             {
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
+                    User entity = new User()
+                    {
+                        Id = Guid.NewGuid(),
+                        FullName = user.FullName
+                    };
+
                     db.Users.Add(entity);
 
                     db.SaveChanges();
@@ -33,7 +40,7 @@ namespace CourseTests.Services.CRUD
         {
             try
             {
-                User user = Get(id);
+                User user = GetEntuty(id);
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
                     db.Entry(user).State = EntityState.Deleted;
@@ -48,7 +55,7 @@ namespace CourseTests.Services.CRUD
             }
         }
 
-        public User Get(Guid id)
+        private User GetEntuty(Guid id)
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
@@ -58,24 +65,28 @@ namespace CourseTests.Services.CRUD
             }
         }
 
-        public List<User> List()
+        public List<UserList> List()
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
-                List<User> users = db.Users.ToList();
+                List<UserList> users = db.Users.Select(u=> new UserList
+                {
+                Id = u.Id,
+                FullName = u.FullName
+                }).ToList();
                 return users;
             }
         }
 
-        public bool Update(User newEntity, Guid id)
+        public bool Update(UserUpdate user, Guid id)
         {
             try
             {
-                User userFromDB = Get(id);
+                User entityFromDB = GetEntuty(id);
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
-                    userFromDB.FullName = newEntity.FullName;
-                    db.Entry(userFromDB).State = EntityState.Modified;
+                    entityFromDB.FullName = user.FullName;
+                    db.Entry(entityFromDB).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return true;
@@ -84,6 +95,20 @@ namespace CourseTests.Services.CRUD
             {
                 return false;
               
+            }
+        }
+
+        public UserView Get(Guid id)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                User entity = GetEntuty(id);
+                UserView user = new UserView()
+                {
+                    Id = entity.Id,
+                    FullName = entity.FullName
+                };
+                return user;
             }
         }
     }
