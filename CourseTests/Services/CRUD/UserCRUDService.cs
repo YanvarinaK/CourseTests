@@ -40,7 +40,7 @@ namespace CourseTests.Services.CRUD
         {
             try
             {
-                User user = GetEntuty(id);
+                User user = GetEntity(id);
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
                     db.Entry(user).State = EntityState.Deleted;
@@ -55,7 +55,7 @@ namespace CourseTests.Services.CRUD
             }
         }
 
-        private User GetEntuty(Guid id)
+        private User GetEntity(Guid id)
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
@@ -69,11 +69,12 @@ namespace CourseTests.Services.CRUD
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
-                List<UserList> users = db.Users.Select(u=> new UserList
-                {
-                Id = u.Id,
-                FullName = u.FullName
-                }).ToList();
+                List<UserList> users = db.Users
+                    .Select(u => new UserList
+                    {
+                        Id = u.Id,
+                        FullName = u.FullName
+                    }).ToList();
                 return users;
             }
         }
@@ -82,7 +83,7 @@ namespace CourseTests.Services.CRUD
         {
             try
             {
-                User entityFromDB = GetEntuty(id);
+                User entityFromDB = GetEntity(id);
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
                     entityFromDB.FullName = user.FullName;
@@ -102,7 +103,7 @@ namespace CourseTests.Services.CRUD
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
-                User entity = GetEntuty(id);
+                User entity = GetEntity(id);
                 UserView user = new UserView()
                 {
                     Id = entity.Id,
