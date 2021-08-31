@@ -11,12 +11,12 @@ namespace CourseTests.GlobalInterfaces
     {
         bool Create(RecordAnswer entity);
 
-        RecordAnswer Get(Guid id);
+        RecordAnswer Get(Guid userId, Guid possibleAnswerId);
 
         List<RecordAnswer> List();
 
-        bool Update(RecordAnswer newEntity, Guid id);
+        bool Update(RecordAnswer newEntity, Guid userId, Guid PossibleAnswerId);
 
-        bool Delete(Guid id);
+        bool Delete(Guid userId, Guid possibleAnswerId);
     }
 }
