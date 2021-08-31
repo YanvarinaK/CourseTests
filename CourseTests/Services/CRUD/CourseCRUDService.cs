@@ -1,4 +1,5 @@
-﻿using CourseTests.Entities;
+﻿using CourseTests.DataTransferObjects.Course;
+using CourseTests.Entities;
 using CourseTests.GlobalInterfaces;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,19 @@ namespace CourseTests.Services.CRUD
 {
     public class CourseCRUDService : ICourseCRUDService
     {
-        public bool Create(Course entity)
+        public bool Create(CourseCreate course)
         {
             try
             {
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
+                    Course entity = new Course()
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = course.Name,
+                        Description = course.Description,
+                        Tests = null
+                    };
                     db.Courses.Add(entity);
                     db.SaveChanges();
                 }
@@ -32,7 +40,7 @@ namespace CourseTests.Services.CRUD
         {
             try
             {
-                Course courseFromDb = Get(id);
+                Course courseFromDb = GetEntity(id);
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
                     db.Entry(courseFromDb).State = EntityState.Deleted;
@@ -48,7 +56,7 @@ namespace CourseTests.Services.CRUD
             }
         }
 
-        public Course Get(Guid id)
+        private Course GetEntity(Guid id)
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
@@ -59,24 +67,30 @@ namespace CourseTests.Services.CRUD
             }
         }
 
-        public List<Course> List()
+        public List<CourseList> List()
         {
             using (CourseTestsContext db = new CourseTestsContext())
             {
-                List<Course> courses = db.Courses.ToList();
+                List<CourseList> courses = db.Courses
+                    .Select(c => new CourseList
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Description = c.Description
+                    }).ToList();
                 return courses;
             }
         }
 
-        public bool Update(Course newEntity, Guid id)
+        public bool Update(CourseUpdate course, Guid id)
         {
             try
             {
-                Course courseFromDb = Get(id);
+                Course courseFromDb = GetEntity(id);
                 using (CourseTestsContext db = new CourseTestsContext())
                 {
-                    courseFromDb.Name = newEntity.Name;
-                    courseFromDb.Description = newEntity.Description;
+                    courseFromDb.Name = course.Name;
+                    courseFromDb.Description = course.Description;
                     db.Entry(courseFromDb).State = EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -85,6 +99,22 @@ namespace CourseTests.Services.CRUD
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public CourseView Get(Guid id)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                Course entity = GetEntity(id);
+                CourseView course = new CourseView()
+                {
+                    Id = entity.Id,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                    TestIds = entity.Tests != null ? entity.Tests.Select(t => t.Id).ToList() : new List<Guid>()
+                };
+                return course;
             }
         }
     }
