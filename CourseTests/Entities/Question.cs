@@ -12,6 +12,7 @@ namespace CourseTests.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public List<PossibleAnswer> PossibleAnswers { get; set; }
+        public Guid TestId { get; set; }
         public Test Test { get; set; }
 
         public Question()
