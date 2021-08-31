@@ -70,6 +70,10 @@
     <Compile Include="Migrations\202108302104421_init.designer.cs">
       <DependentUpon>202108302104421_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108311517032_AddTableUsers.cs" />
+    <Compile Include="Migrations\202108311517032_AddTableUsers.designer.cs">
+      <DependentUpon>202108311517032_AddTableUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202108302104421_init.resx">
       <DependentUpon>202108302104421_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108311517032_AddTableUsers.resx">
+      <DependentUpon>202108311517032_AddTableUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

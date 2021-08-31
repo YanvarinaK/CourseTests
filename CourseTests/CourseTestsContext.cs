@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseTests.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace CourseTests
     {
         public CourseTestsContext() : base("CourseTestsDB") 
         { }
+
+        public DbSet<User> Users { get; set; }
     }
 }
