@@ -58,6 +58,10 @@
     <Compile Include="DataTransferObjects\Course\CourseList.cs" />
     <Compile Include="DataTransferObjects\Course\CourseUpdate.cs" />
     <Compile Include="DataTransferObjects\Course\CourseView.cs" />
+    <Compile Include="DataTransferObjects\Test\TestCreate.cs" />
+    <Compile Include="DataTransferObjects\Test\TestList.cs" />
+    <Compile Include="DataTransferObjects\Test\TestUpdate.cs" />
+    <Compile Include="DataTransferObjects\Test\TestView.cs" />
     <Compile Include="DataTransferObjects\User\UserCreate.cs" />
     <Compile Include="DataTransferObjects\User\UserList.cs" />
     <Compile Include="DataTransferObjects\User\UserUpdate.cs" />
@@ -90,6 +94,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CRUD\CourseCRUDService.cs" />
+    <Compile Include="Services\CRUD\TestCRUDService.cs" />
     <Compile Include="Services\CRUD\UserCRUDService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +112,7 @@
       <DependentUpon>202108311610172_AddCoursesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
