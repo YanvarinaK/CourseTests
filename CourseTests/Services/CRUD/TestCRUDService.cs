@@ -25,7 +25,6 @@ namespace CourseTests.Services.CRUD
                         Description = test.Description,
                         Questions = null,
                         CourseId = test.CourseId,
-                        Course = db.Courses.FirstOrDefault(c=>c.Id == test.CourseId)
                     };
                     db.Tests.Add(entity);
                     db.SaveChanges();
