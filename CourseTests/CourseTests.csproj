@@ -121,6 +121,7 @@
   <ItemGroup>
     <Content Include="DB_Scripts\SQL216-Insert.sql" />
     <Content Include="DB_Scripts\SQL217-Update.sql" />
+    <Content Include="DB_Scripts\SQL218-Delete.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
