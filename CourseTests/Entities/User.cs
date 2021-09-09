@@ -10,5 +10,12 @@ namespace CourseTests.Entities
     {
         public Guid Id { get; set; }
         public string FullName { get; set; }
+
+        public List<PossibleAnswer> PossibleAnswers { get; set; }
+
+        public User()
+        {
+            PossibleAnswers = new List<PossibleAnswer>();
+        }
     }
 }

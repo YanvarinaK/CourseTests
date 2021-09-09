@@ -1,4 +1,5 @@
-﻿using CourseTests.Entities;
+﻿using CourseTests.DataTransferObjects.RecordAnswer;
+using CourseTests.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,11 @@ namespace CourseTests.GlobalInterfaces
 {
     public interface IRecordAnswerCRUDService
     {
-        bool Create(RecordAnswer entity);
+        bool Create(RecordAnswerCreate recordAnswer);
 
-        RecordAnswer Get(Guid userId, Guid possibleAnswerId);
+        RecordAnswerView Get(Guid userId);
 
-        List<RecordAnswer> List();
-
-        bool Update(RecordAnswer newEntity, Guid userId, Guid PossibleAnswerId);
+        List<RecordAnswerView> List();
 
         bool Delete(Guid userId, Guid possibleAnswerId);
     }

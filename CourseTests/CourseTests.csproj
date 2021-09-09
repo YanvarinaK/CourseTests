@@ -66,6 +66,8 @@
     <Compile Include="DataTransferObjects\Question\QuestionList.cs" />
     <Compile Include="DataTransferObjects\Question\QuestionUpdate.cs" />
     <Compile Include="DataTransferObjects\Question\QuestionView.cs" />
+    <Compile Include="DataTransferObjects\RecordAnswer\RecordAnswerCreate.cs" />
+    <Compile Include="DataTransferObjects\RecordAnswer\RecordAnswerView.cs" />
     <Compile Include="DataTransferObjects\Test\TestCreate.cs" />
     <Compile Include="DataTransferObjects\Test\TestList.cs" />
     <Compile Include="DataTransferObjects\Test\TestUpdate.cs" />
@@ -98,12 +100,17 @@
     <Compile Include="Migrations\202108311610172_AddCoursesTable.designer.cs">
       <DependentUpon>202108311610172_AddCoursesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109091657031_addRelationPossibleAnswerAndUser.cs" />
+    <Compile Include="Migrations\202109091657031_addRelationPossibleAnswerAndUser.designer.cs">
+      <DependentUpon>202109091657031_addRelationPossibleAnswerAndUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CRUD\CourseCRUDService.cs" />
     <Compile Include="Services\CRUD\PossibleAnswerCRUDService.cs" />
     <Compile Include="Services\CRUD\QuestionCRUDService.cs" />
+    <Compile Include="Services\CRUD\RecordAnswerCRUDService.cs" />
     <Compile Include="Services\CRUD\TestCRUDService.cs" />
     <Compile Include="Services\CRUD\UserCRUDService.cs" />
   </ItemGroup>
@@ -120,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108311610172_AddCoursesTable.resx">
       <DependentUpon>202108311610172_AddCoursesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109091657031_addRelationPossibleAnswerAndUser.resx">
+      <DependentUpon>202109091657031_addRelationPossibleAnswerAndUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

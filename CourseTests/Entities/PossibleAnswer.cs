@@ -13,5 +13,12 @@ namespace CourseTests.Entities
         public bool IsRight { get; set; }
         public Guid QuestionId { get; set; }
         public Question Question { get; set; }
+
+        public List<User> Users { get; set; }
+
+        public PossibleAnswer()
+        {
+            Users = new List<User>();
+        }
     }
 }
