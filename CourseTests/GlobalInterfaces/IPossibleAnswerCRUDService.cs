@@ -1,4 +1,5 @@
-﻿using CourseTests.Entities;
+﻿using CourseTests.DataTransferObjects.PossibleAnswer;
+using CourseTests.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace CourseTests.GlobalInterfaces
 {
     public interface IPossibleAnswerCRUDService
     {
-        bool Create(PossibleAnswer entity);
+        bool Create(PossibleAnswerCreate possibleAnswer);
 
-        PossibleAnswer Get(Guid id);
+        PossibleAnswerView Get(Guid id);
 
-        List<PossibleAnswer> List();
+        List<PossibleAnswerList> List();
 
-        bool Update(PossibleAnswer newEntity, Guid id);
+        bool Update(PossibleAnswerUpdate newPossibleAnswer, Guid id);
 
         bool Delete(Guid id);
     }
