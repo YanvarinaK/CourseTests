@@ -20,5 +20,7 @@ namespace CourseTests
         public DbSet<Test> Tests { get; set; }
 
         public DbSet<Question> Questions { get; set; }
+
+        public DbSet<PossibleAnswer> PossibleAnswers { get; set; }
     }
 }
