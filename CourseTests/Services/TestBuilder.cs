@@ -1,5 +1,6 @@
 ﻿using CourseTests.DataTransferObjects.PossibleAnswer;
 using CourseTests.DataTransferObjects.Question;
+using CourseTests.DataTransferObjects.Test;
 using CourseTests.DataTransferObjects.TestBuilder;
 using CourseTests.GlobalInterfaces;
 using CourseTests.Services.CRUD;
@@ -17,10 +18,13 @@ namespace CourseTests.Services
 
         private readonly IPossibleAnswerCRUDService possibleAnswerCRUDService;
 
+        private readonly ITestCRUDService testCRUDService;
+
         public TestBuilder()
         {
             this.questionCRUDService = new QuestionCRUDService();
             this.possibleAnswerCRUDService = new PossibleAnswerCRUDService();
+            this.testCRUDService = new TestCRUDService();
         }
 
         public Guid QuestionBuild(QuestionBuildSettings setting)
@@ -55,6 +59,44 @@ namespace CourseTests.Services
                 possibleAnswerCRUDService.Create(item);
             }
             return questionId.Value;
+        }
+
+        public bool TestBuild(TestCreateSettings settings)
+        {
+            try
+            {
+                TestCreate test = new TestCreate()
+                {
+                    CourseId = settings.CourseId,
+                    Name = settings.Name,
+                    Description = settings.Description
+                };
+                Guid? testId;
+                testCRUDService.Create(test, out testId);
+                if (testId == null)
+                {
+                    throw new Exception("Failed Test Create");
+                }
+                var questionCreates = settings.questions
+                    .Select(q => new QuestionBuildSettings
+                    {
+                        Name = q.Name,
+                        Description = q.Description,
+                        TestId = testId.Value,
+                        possibleAnswers = q.possibleAnswers
+                    })
+                    .ToList();
+                foreach (var item in questionCreates)
+                {
+                    QuestionBuild(item);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
     }
 }

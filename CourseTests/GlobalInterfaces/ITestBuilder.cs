@@ -10,5 +10,7 @@ namespace CourseTests.GlobalInterfaces
     public interface ITestBuilder
     {
         Guid QuestionBuild(QuestionBuildSettings setting);
+        bool TestBuild(TestCreateSettings settings);
+
     }
 }

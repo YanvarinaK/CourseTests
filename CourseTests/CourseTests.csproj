@@ -70,6 +70,8 @@
     <Compile Include="DataTransferObjects\RecordAnswer\RecordAnswerView.cs" />
     <Compile Include="DataTransferObjects\TestBuilder\PossibleAnswerBuildSettings.cs" />
     <Compile Include="DataTransferObjects\TestBuilder\QuestionBuildSettings.cs" />
+    <Compile Include="DataTransferObjects\TestBuilder\QuestionTestBuildSettings.cs" />
+    <Compile Include="DataTransferObjects\TestBuilder\TestCreateSettings.cs" />
     <Compile Include="DataTransferObjects\Test\TestCreate.cs" />
     <Compile Include="DataTransferObjects\Test\TestList.cs" />
     <Compile Include="DataTransferObjects\Test\TestUpdate.cs" />
