@@ -10,7 +10,7 @@ namespace CourseTests.GlobalInterfaces
 {
     public interface IQuestionCRUDService
     {
-        bool Create(QuestionCreate question);
+        bool Create(QuestionCreate question, out Guid? QuestionId);
 
         QuestionView Get(Guid id);
 

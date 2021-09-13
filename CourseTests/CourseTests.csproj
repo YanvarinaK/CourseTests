@@ -68,6 +68,8 @@
     <Compile Include="DataTransferObjects\Question\QuestionView.cs" />
     <Compile Include="DataTransferObjects\RecordAnswer\RecordAnswerCreate.cs" />
     <Compile Include="DataTransferObjects\RecordAnswer\RecordAnswerView.cs" />
+    <Compile Include="DataTransferObjects\TestBuilder\PossibleAnswerBuildSettings.cs" />
+    <Compile Include="DataTransferObjects\TestBuilder\QuestionBuildSettings.cs" />
     <Compile Include="DataTransferObjects\Test\TestCreate.cs" />
     <Compile Include="DataTransferObjects\Test\TestList.cs" />
     <Compile Include="DataTransferObjects\Test\TestUpdate.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="GlobalInterfaces\IPossibleAnswerCRUDService.cs" />
     <Compile Include="GlobalInterfaces\IQuestionCRUDService.cs" />
     <Compile Include="GlobalInterfaces\IRecordAnswerCRUDService.cs" />
+    <Compile Include="GlobalInterfaces\ITestBuilder.cs" />
     <Compile Include="GlobalInterfaces\ITestCRUDService.cs" />
     <Compile Include="GlobalInterfaces\IUserCRUDService.cs" />
     <Compile Include="Migrations\202108302104421_init.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Services\CRUD\RecordAnswerCRUDService.cs" />
     <Compile Include="Services\CRUD\TestCRUDService.cs" />
     <Compile Include="Services\CRUD\UserCRUDService.cs" />
+    <Compile Include="Services\TestBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
