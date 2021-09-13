@@ -6,7 +6,7 @@ namespace CourseTests.GlobalInterfaces
 {
     public interface ITestCRUDService
     {
-        bool Create(TestCreate test);
+        bool Create(TestCreate test, out Guid? testId);
 
         TestView Get(Guid id);
 

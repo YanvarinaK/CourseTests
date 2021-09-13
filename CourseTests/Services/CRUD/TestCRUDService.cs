@@ -12,7 +12,7 @@ namespace CourseTests.Services.CRUD
 {
     public class TestCRUDService : ITestCRUDService
     {
-        public bool Create(TestCreate test)
+        public bool Create(TestCreate test, out Guid? testId)
         {
             try
             {
@@ -28,11 +28,13 @@ namespace CourseTests.Services.CRUD
                     };
                     db.Tests.Add(entity);
                     db.SaveChanges();
+                    testId = entity.Id;
                 }
                 return true;
             }
             catch (Exception)
             {
+                testId = null;
                 return false;
             }
         }
