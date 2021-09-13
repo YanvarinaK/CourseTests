@@ -12,7 +12,7 @@ namespace CourseTests.Services.CRUD
 {
     public class QuestionCRUDService : IQuestionCRUDService
     {
-        public bool Create(QuestionCreate question)
+        public bool Create(QuestionCreate question, out Guid? questionId)
         {
             try
             {
@@ -28,11 +28,13 @@ namespace CourseTests.Services.CRUD
                     };
                     db.Questions.Add(entity);
                     db.SaveChanges();
+                    questionId = entity.Id;
                 }
                 return true;
             }
             catch (Exception)
             {
+                questionId = null;
                 return false;
             }
         }
