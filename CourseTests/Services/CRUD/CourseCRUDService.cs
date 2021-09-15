@@ -117,5 +117,23 @@ namespace CourseTests.Services.CRUD
                 return course;
             }
         }
+
+        public List<CourseList> ListPagination(int page = 0, int pageSize = 4)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                List<CourseList> courses = db.Courses
+                    .OrderBy(x=> x.Name)
+                    .Skip(pageSize * page)
+                    .Take(pageSize)
+                    .Select(c => new CourseList
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Description = c.Description
+                    }).ToList();
+                return courses;
+            }
+        }
     }
 }

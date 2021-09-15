@@ -93,6 +93,25 @@ namespace CourseTests.Services.CRUD
             }
         }
 
+        public List<TestList> ListPagination(int page = 0, int pageSize = 4)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                List<TestList> tests = db.Tests
+                    .OrderBy(x=> x.Name)
+                    .Skip(pageSize * page)
+                    .Take(pageSize)
+                    .Select(c => new TestList
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Description = c.Description,
+                        CourseId = c.CourseId
+                    }).ToList();
+                return tests;
+            }
+        }
+
         public bool Update(TestUpdate newTest, Guid id)
         {
             try

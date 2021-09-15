@@ -112,5 +112,22 @@ namespace CourseTests.Services.CRUD
                 return user;
             }
         }
+
+        public List<UserList> ListPagination(int page = 0, int pageSize = 4)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                List<UserList> PartOfUsers = db.Users
+                    .OrderBy(x => x.FullName)
+                    .Skip(pageSize * page)
+                    .Take(pageSize)
+                    .Select(u => new UserList
+                    {
+                        Id = u.Id,
+                        FullName = u.FullName
+                    }).ToList();
+                return PartOfUsers;
+            }
+        }
     }
 }

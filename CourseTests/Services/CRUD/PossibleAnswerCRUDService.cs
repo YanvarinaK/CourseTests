@@ -88,6 +88,25 @@ namespace CourseTests.Services.CRUD
             }
         }
 
+        public List<PossibleAnswerList> ListPagination(int page = 0, int pageSize = 4)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                List<PossibleAnswerList> possibleAnswers = db.PossibleAnswers
+                    .OrderBy(x=> x.Name)
+                    .Skip(pageSize * page)
+                    .Take(pageSize)
+                    .Select(p => new PossibleAnswerList
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        IsRight = p.IsRight,
+                        QuestionId = p.QuestionId
+                    }).ToList();
+                return possibleAnswers;
+            }
+        }
+
         public bool Update(PossibleAnswerUpdate newPossibleAnswer, Guid id)
         {
             try

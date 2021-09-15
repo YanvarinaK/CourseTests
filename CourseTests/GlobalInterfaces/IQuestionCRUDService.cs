@@ -19,5 +19,8 @@ namespace CourseTests.GlobalInterfaces
         bool Update(QuestionUpdate newQuestion, Guid id);
 
         bool Delete(Guid id);
+
+        List<QuestionList> ListPagination(int page = 0, int pageSize = 4);
+
     }
 }
