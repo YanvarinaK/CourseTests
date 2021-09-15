@@ -17,5 +17,8 @@ namespace CourseTests.GlobalInterfaces
         List<RecordAnswerView> List();
 
         bool Delete(Guid userId, Guid possibleAnswerId);
+
+        List<RecordAnswerView> ListPagination(int page = 0, int pageSize = 4);
+
     }
 }

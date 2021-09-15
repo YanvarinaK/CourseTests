@@ -139,5 +139,36 @@ namespace CourseTests.Services.CRUD
                 return db.PossibleAnswers.Include(p => p.Users).FirstOrDefault(p => p.Id == id);
             }
         }
+
+        public List<RecordAnswerView> ListPagination(int page = 0, int pageSize = 4)
+        {
+            using (CourseTestsContext db = new CourseTestsContext())
+            {
+                var users = db.Users.Include(x => x.PossibleAnswers)
+                    .Where(x => x.PossibleAnswers.Count > 0)
+                    .OrderBy(x=> x.FullName)
+                    .Skip(pageSize * page)
+                    .Take(pageSize)
+                    .ToList();
+
+                var recordAnswers = users.Select(u => new RecordAnswerView
+                {
+                    UserId = u.Id,
+                    FullNameUser = u.FullName,
+                    Answers = u.PossibleAnswers != null
+                    ? u.PossibleAnswers.Select(p => new PossibleAnswerView
+                    {
+                        Id = p.Id,
+                        IsRight = p.IsRight,
+                        QuestionId = p.QuestionId,
+                        Name = p.Name
+                    }).ToList()
+                    : new List<PossibleAnswerView>()
+                })
+                .ToList();
+
+                return recordAnswers;
+            }
+        }
     }
 }
