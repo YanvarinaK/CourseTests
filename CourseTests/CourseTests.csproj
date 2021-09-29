@@ -148,6 +148,10 @@
     <Content Include="DB_Scripts\SQL227-AnswerList.sql" />
     <Content Include="DB_Scripts\SQL228-CountOfAnswers.sql" />
     <Content Include="DB_Scripts\SQL229-ListOfQuestions.sql" />
+    <Content Include="DB_Scripts\ViewListOfCourses.sql" />
+    <Content Include="DB_Scripts\ViewListOfRightAnswers.sql" />
+    <Content Include="DB_Scripts\ViewListOfTests.sql" />
+    <Content Include="DB_Scripts\ViewListOfWrongAnswers.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
