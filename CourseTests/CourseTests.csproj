@@ -140,6 +140,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="DB_Scripts\GetCountOfQuestions.sql" />
+    <Content Include="DB_Scripts\GetCountOfRightAnswers1.sql" />
+    <Content Include="DB_Scripts\GetCountOfRightAnswersInTest.sql" />
+    <Content Include="DB_Scripts\GetCountOfTests.sql" />
+    <Content Include="DB_Scripts\GetRightAnswers.sql" />
+    <Content Include="DB_Scripts\GetRightAnswersInTest.sql" />
     <Content Include="DB_Scripts\SQL216-Insert.sql" />
     <Content Include="DB_Scripts\SQL217-Update.sql" />
     <Content Include="DB_Scripts\SQL218-Delete.sql" />
